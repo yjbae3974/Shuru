@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter-공지사항(edit)</title>
+	<!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
+	<!-- Google Fonts Roboto -->
+    <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+    />
+   
+	<link rel="stylesheet" href="../announce/announce.css">
+    <link rel="stylesheet" href="checkbox.css">
+    <link rel="stylesheet" href="..\css\jquery.accordion.css">
+    <link rel="stylesheet" href="demo.css">
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <style>
+.accordion{
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #999;
+  border-radius: 5px;
+  float: left;
+}
+
+.accordion-title {
+  background-color: #999;
+  color: white;
+  width: 100%;
+  float: left;
+  padding: 5px;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+.accordion-title.active {
+  background-color: #999;  
+    border-radius: 5px 5px 0 0;
+}
+.accordion-content {
+  display: none;
+  border: 1px solid #999;
+  float: left;
+  width: 100%;
+  padding: 5px;
+}
+
+      th{
+        font-weight: 700 !important;
+      }
+      
+		
+		a.active.tabcolor{color: #17375E!important;border-bottom: solid #17375E!important;}
+	.nav-title{
+		color: #fff;
+	}
+    
+.form-control:focus {
+  border-color: transparent !important;
+  box-shadow: inset 0 0 0 1px transparent;
+}
+.input-group-lg>.form-control{
+    
+    font-size: 24px !important;
+}
+.input-group-lg>.form-control::placeholder{
+  color: #bfbfbf;
+}
+.form-control::placeholder{
+  color: #bfbfbf!important;
+}
+.form-outline .form-control{
+  padding:12px 24px !important;
+  border-radius: 100px!important;
+}
+.form-outline .form-control::placeholder{
+  color: #bfbfbf;
+}
+.form-outline .form-control~.form-label{
+  left: 24px!important;
+  top: 6px !important;
+  color: #bfbfbf!important;
+  
+}
+
+    </style>
+	 <link rel="stylesheet" href="../css/mdb.min.css" />
+	 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+	 <script  src="https://code.jquery.com/jquery-latest.min.js"></script>
+	 <script>
+		 $(document).ready(function(){
+        $("#footer").load("../footer.html");
+      });
+	 </script>
+</head>
+<body style="min-height: 100vh;">
+    <div id="navbar"></div>
+	  <nav id="navOption" class="sticky-nav">
+		  <div class="container">
+			<ul class="nav nav-tabs d-flex justify-content-end" id="ex1" role="tablist" style="border-bottom: 1px solid #fff;">
+				<li class="nav-item" role="presentation" style="max-width: 50%;width: 150px">
+				  <a
+					class="nav-link active text-center tabcolor"
+					id="ex1-tab-1"
+					data-toggle="tab"
+					data-mdb-toggle="tab"
+					href="#ex1-tabs-1"
+					role="tab"
+					aria-controls="ex1-tabs-1"
+					aria-selected="true"
+					style="font-size: 16px; font-weight: 900;"
+					>공지사항</a
+				  >
+				</li>
+				<li class="nav-item" role="presentation" style="max-width: 50%;width: 150px">
+				  <a
+					class="nav-link text-center tabcolor"
+					id="ex1-tab-2"
+					data-mdb-toggle="tab"
+					data-toggle="tab"
+					href="#ex1-tabs-2"
+					role="tab"
+					aria-controls="ex1-tabs-2"
+					aria-selected="false"
+					style="font-size: 16px; font-weight: 900;"
+					>도움말</a
+				  >
+				  
+				</li>
+          <li class="nav-item" role="presentation" style="max-width: 50%;width: 150px">
+              <a
+                class="nav-link text-center tabcolor"
+                id="ex1-tab-2"
+                data-mdb-toggle="tab"
+                data-toggle="tab"
+                href="#ex1-tabs-3"
+                role="tab"
+                aria-controls="ex1-tabs-3"
+                aria-selected="false"
+                style="font-size: 16px; font-weight: 900;"
+                >문의사항</a
+              >
+              
+            </li>
+				
+			  </ul>
+		  </div>
+		
+	  </nav>
+      <div class="tab-content" id="ex1-content" style="min-height: 100vh;">
+        <div
+        class="tab-pane fade show active"
+        id="ex1-tabs-1"
+        role="tabpanel"
+        aria-labelledby="ex1-tab-1"
+      >
+        
+      <div class="container" style="margin-top: 300px;">
+        <p class="announcement">공지사항</p>
+          <div class="col-xl-12" style="max-width: 1280px;background-color: #f3f3f3; padding: 30px">
+            <form method="post" class="">
+              <div class="row">
+                <div class="col-md-3">
+                  <select class="form-select form-control" style="background-color: #fff;border-color: #ebeaed;" name="" id="post-type">
+                    <option value="">분류</option>
+                    <option value="공지">[공지]</option>
+                    <option value="업데이트">[업데이트]</option>
+                    <option value="이벤트">[이벤트]</option>
+                    <option value="개발현황">[개발현황]</option>
+                    <option value="버그수정">[버그수정]</option>
+                  </select>
+                </div>
+                <div class="col-md-9">
+                  <input type="text" id="title" class="form-control mb-3" placeholder="제목을 입력하세요">
+                </div>
+              </div>
+                
+                <textarea id="summernote" name="editordata"></textarea>
+                <div class="mt-5 pt-5 d-flex justify-content-center" style="border-top: 1px solid #8c8c8c;position: relative;">
+                  <div class="btn-base mx-3" style="padding: 4px 16px" onclick="autosave();">임시저장</div>
+                  <div class="btn-base mx-3 text-white" style="padding: 4px 16px;background-color: #17375E;" onclick="submit(collectionName, pageName);">등록</div>
+                  <div class="btn-base mx-3" style="padding: 4px 16px" onclick="back();">돌아가기</div>
+                </div>
+                
+              </form>
+          </div>
+          
+        </div>
+        
+      </div><!--여기까지 tab1-->
+      <div
+        class="tab-pane fade show"
+        id="ex1-tabs-2"
+        role="tabpanel"
+        aria-labelledby="ex1-tab-2">
+      <div class="container-fluid bg-announce d-flex align-items-center" style="margin-top: 113px; min-height: 500px;">
+        <div class="container col-xl-4 col-lg-6 col-md-8 d-flex justify-content-center align-items-center" style="height: 100%;flex-direction: column;">
+            <p class="title mb-5 mt-5">
+                도움말
+            </p>
+            <div class="card mb-2"
+          style="border-radius: 10em; width: 100%;">
+          <div class="card-body p-2">
+            <div class="input-group input-group-lg">
+              <input type="text" id="searchWord2" class="form-control form-control-lg rounde bg-transparent" style="border: 0px !important;"
+              placeholder="검색어를 입력하세요" aria-label="Type Keywords" aria-describedby="basic-addon2" />
+              <span class="input-group-text border-0" id="basic-addon2"><i
+                  class="fas fa-search fa-lg"></i></span>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+
+        </div>
+        </div>
+        
+    </div>
+    
+    <div class="container" style="margin-top: 100px;" id="question-placeholder"></div>
+      </div>
+    
+      <div
+        class="tab-pane fade show"
+        id="ex1-tabs-3"
+        role="tabpanel"
+        aria-labelledby="ex1-tab-3"
+      >
+      <div class="container-fluid bg-announce d-flex align-items-center" style="margin-top: 113px; min-height: 500px;">
+        <div class="container col-xl-4 col-lg-6 col-md-8 d-flex justify-content-center align-items-center" style="height: 100%;flex-direction: column;">
+            <p class="title mb-5 mt-5"><!--여기서 검색하면 도움말에서 검색한걸로 뜬다네-->
+                문의사항
+            </p>
+            <div class="card mb-2"
+          style="border-radius: 10em; width: 100%;">
+          <div class="card-body p-2">
+            <div class="input-group input-group-lg">
+              <input type="text" class="form-control form-control-lg rounde bg-transparent" style="border: 0px !important;"
+                placeholder="검색어를 입력하세요" aria-label="Type Keywords" aria-describedby="basic-addon2" />
+              <span class="input-group-text border-0" id="basic-addon2"><i
+                  class="fas fa-search fa-lg"></i></span>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+
+        </div>
+        </div>
+        
+    </div>
+      <div class="container" style="margin-top: 100px;">
+        <div class="row">
+          <div class="col-lg-6" style="padding: 0px 40px;">
+            <p class="title" style="color:#060B11">E-mail Us</p>
+            <div class="d-flex mt-1" style="align-self: flex-start;flex-wrap: wrap;color: #bfbfbf">
+              <label class="checkbox-container">질문사항
+                  <input type="checkbox" checked="checked">
+                  <span class="checkmark" style="border-color: #efefef;"></span>
+                </label>
+                <label class="checkbox-container mx-3">건의사항
+                  <input type="checkbox">
+                  <span class="checkmark" style="border-color: #efefef;"></span>
+                </label>
+              
+          </div>
+          <form style="color: #060B11;">
+            <!-- Email input -->
+            <p class="font-weight-bold" style="font-size: 14px;">E-MAIL</p>
+            <input type="text" class="form-control form-rounded" placeholder="Your email" style="padding: 10px 20px;">
+          
+            <p class="font-weight-bold mt-3" style="font-size: 14px;">MESSAGE</p>
+            <textarea name="" id="" cols="30" rows="8" placeholder="Your Message"></textarea>
+            <p class="font-weight-bold mt-3" style="font-size: 14px;">NAME</p>
+            <div class="row">
+              <div class="col-8">
+                <input type="text" class="form-control form-rounded" placeholder="Your email" style="padding: 10px 20px;">
+              </div>
+              <div class="col-4" style="padding: 0px 20px;">
+                <button type="submit" class="btn-rounded text-white text-center" style="font-size: 18px;height: 100%;background-color: #17375E;">Send</button>
+              </div>
+            </div>
+            
+           
+          </form>
+          </div>
+          <div class="col-lg-6" style="padding: 0px 40px;">
+            <p class="title" style="color:#060B11">Contact</p>
+            <p style="color: #bfbfbf;line-height: 40px;font-size: 18px;">
+              상담 전화 및 메일 주소는 다음과 같습니다.<br>
+              문의사항이 있으시다면 연락주세요.
+            </p>
+            <div style="font-size: 18px; color: #060B11;">
+              <i class="fas fa-phone-alt me-3" style="color: #17375e;"></i>
+              010.7518.1590
+            </div>
+            <div class="mt-3" style="font-size: 18px; color: #060B11;">
+              <i class="fas fa-envelope me-3" style="color: #17375E;"></i>
+              brianbae6@korea.ac.kr
+            </div>
+            <div class="mt-3" style="font-size: 18px; color: #060B11;">
+              <div class="d-flex">
+                <i class="fas fa-home me-3 mt-1" style="color: #17375E;"></i>
+                <div>
+                  서울특별시 동대문구 안암로 14길<br> (상세주소)
+                </div>
+              </div>
+              
+            </div>
+            <p style="font-size: 22px; color: #060B11;margin-top: 43px;">We are on Socials</p>
+            <div style="color: #bfbfbf;">
+              <i class="fab fa-facebook-square me-3" style="color: #17375E;font-size: 18px;"></i>
+              Facebook
+            </div>
+            <div class="mt-3" style="color: #bfbfbf;">
+              <i class="fab fa-twitter me-3" style="color: #17375E;font-size: 18px;"></i>
+              Twitter
+            </div>
+            <div class="mt-3" style="color: #bfbfbf;">
+              <i class="fab fa-pinterest me-3" style="color: #17375E;font-size: 18px;"></i>
+              Pinterest
+            </div>
+            <div class="mt-3" style="color: #bfbfbf;">
+              <i class="fab fa-instagram me-3" style="color: #17375E;font-size: 18px;"></i>
+              instagram
+            </div>
+          </div>
+        </div>
+    </div><!--container end-->
+    <div class="container-fluid" style="height: 480px;margin-top: 100px;">
+      <div id="map" style="height: 100%;"></div>
+    </div>
+      </div>
+        </div>
+    <footer id="footer"></footer>
+	<!-- MDB -->
+    <script type="text/javascript" src="../js/mdb.min.js"></script>
+    
+    <!-- Custom scripts -->
+    <script type="text/javascript"></script>
+	
+  <script src="..\js\jquery.accordion.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#summernote').summernote({
+        placeholder: '내용을 입력하세요.',
+        tabsize: 2,
+        height: 500,
+        toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'underline', 'clear']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['table', ['table']],
+          ['insert', ['link', 'picture', 'video']],
+          ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+      });
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      var firebaseConfig = {
+        apiKey: "AIzaSyD6mm7QMMvibd3f-NGgXVPPjJnN30gMWv0",
+        authDomain: "shift-enter.firebaseapp.com",
+        databaseURL: "https://shift-enter-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "shift-enter",
+        storageBucket: "shift-enter.appspot.com",
+        messagingSenderId: "485214384329",
+        appId: "1:485214384329:web:69d7078e22638707c8dd18",
+        measurementId: "G-CQSC9HJMKH"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+
+      $("#navbar").load('../navbar/beforelogin.html');
+      getQuestionData(getQuestionSnapshot());
+      value = decodeURI(window.location.search).substr(1)
+      if(value!=null || value!=""){
+         console.log(value);
+         getContent(value);
+      }      
+    });
+    $(window).load(function(){
+      $('#소통').addClass('active');
+      $('#only-one [accordion]').accordion({
+        autoheight: false
+      });
+
+      $('#multiple [accordion]').accordion({
+        singleOpen: false,
+        autoheight: false
+      });
+
+      $('#single[accordion]').accordion({
+        transitionEasing: 'cubic-bezier(0.455, 0.030, 0.515, 0.955)',
+        transitionSpeed: 200,
+        autoheight: false
+      });
+    });
+  </script>
+  <script async
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC33JiJfsCheBCOLJbPiMKqf19OxnkKyyE&callback=initMap">
+</script>
+</body>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-analytics.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-database.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js" integrity="sha512-zT3zHcFYbQwjHdKjCu6OMmETx8fJA9S7E6W7kBeFxultf75OPTYUJigEKX58qgyQMi1m1EgenfjMXlRZG8BXaw==" crossorigin="anonymous"></script>
+<script src="admin.js"></script>
+<script src="admin_announce.js"></script>
+<script src="admin_question.js"></script>
+
+
+<script id="question-template" type="text/x-handlebars-template">
+  <div class="container" style="margin-top: 100px; overflow:auto;">
+    {{#contents}}
+    <section class="accordion">
+      <button class="accordion-title">
+        <div class="col-10"><div class="click2edit" id="title{{num}}"></div></div>
+      </button>
+      <div class="accordion-content">
+        <article class="article2edit">
+          <div class="row">
+            <div class="col-10">
+              <div class="click2edit" id="content{{num}}"></div>
+            </div>
+            <div class="col-2 d-flex justify-content-end">
+                  <button class="edit" onclick="edit('{{num}}');"><i class="fas fa-edit"></i><div id="visible{{num}}" style="font-size: 9px;"></div></button>
+                  <button class="edit" onclick="submitQuestion(myTitle('{{num}}'), '{{num}}', myContent('{{num}}'));"><i class="far fa-save"></i><div style="font-size: 9px;">save</div></button>
+                  <button class="edit" onclick="deleteQuestion(myTitle('{{num}}'), '{{num}}')"><i class="fas fa-trash-alt"></i><div style="font-size: 9px;">del</div></button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+    {{/contents}}
+  </div>
+
+  <div class="d-flex justify-content-center" style="color: #8c8c8c; margin-top: 40px; margin-bottom: 40px;">
+    <div class="clickable" style="font-size: 18px;" onclick="addQuestion();"><span style="font-weight: 700;">+</span> 추가답변 작성하기</div>
+  </div>
+</script>
+
+<script>
+  var source3   = $("#question-template").html();
+  var questionTemplate = Handlebars.compile(source3);
+  //var collectionName = "announce";
+  //var pageName = "admin.html";
+
+</script>
+</html>
